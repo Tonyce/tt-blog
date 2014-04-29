@@ -1,0 +1,62 @@
+.person-info {
+	position: fixed;
+	top: 10%;
+	left: 10%;
+	width: 20%;
+	height: auto;
+	background: #CCFF99;
+	text-align: center;
+	overflow: auto;
+	border-radius: 50px;
+	
+}
+
+.person-info > img {
+	position: relative;
+	width: 180px;
+	height: 180px;
+	border-radius: 70px;
+	border: 2px solid #facbde;
+	margin: 0 auto;
+	top: 20px;
+	opacity: 1;
+}
+
+.show:hover {
+	opacity: 1;
+}
+
+.person-info > div {
+	position: relative;
+	width: 220px;
+	height: auto;
+	border-radius: 10px;
+	opacity: 0.5;
+	margin: 5px auto;
+	text-align: left;
+}
+
+.person-introduce {
+	width: 100%;
+	padding: 5px 0px;
+	margin: 3px 0;
+
+}
+
+.person-introduce  > div {
+	display: block;
+	margin: 3px 0;
+	width: 100%;
+	text-align: left;
+}
+.person-introduce  div.pre-cont {
+	float: left;
+	width: 50%;
+	text-align: left;
+}
+
+.person-introduce div.pre-intro{
+	float: left;
+	width: 40%;
+	text-align: left;
+}

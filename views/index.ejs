@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>TT-Blog</title>
+		<meta name="description" content="Expanding Overlay Effect: Revealing content using CSS clip" />
+		<meta name="keywords" content="css, css3, clip, rect(), overlay, expand, fixed, effect, responsive" />
+		<meta name="author" content="Codrops" />
+
+		<link rel="stylesheet" type="text/css" href="css/root.css" />
+		<link rel="stylesheet" type="text/css" href="css/person-info.css" />
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+		<link rel="stylesheet" type="text/css" href="css/article.css" />
+	</head>
+	<body>
+<!-- <div class="container">	 -->
+<!--*********************-->
+			<!--个人名片-->
+			<div class="person-info">
+				<img src="images/lufei.jpg">
+				<h2>``</h2>
+				<div class="show">
+					<a href="#">个人简介:</a>
+					<div class="person-introduce">
+						<div><div class="pre-intro">NickName:</div><div class="pre-cont">D_ttang</div></div>
+						<div><div class="pre-intro">Email:</div><div class="pre-cont"><a href="#">D_ttang@163.com</a></div></div>
+						<div><div class="pre-intro">QQ:</div><div class="pre-cont">382361909</div></div>
+					</div>
+				</div>
+
+				<div style="margin-top:10px, text-align:center, width:100%"><h1>===---------===</h1></div>
+				<div>
+					<span>The Gole:</span>
+					<h5>...</h5>
+					<div><h3>这些被被荒废了的时间。</h3></div>
+				</div>
+				<h1>------------------</h1>
+				<button id="new-build">创建</button>
+				<div class="logindiv">
+					<form id="login">
+						<p>username: <input type="text" name="username" /></p>
+						<p>password: <input type="text" name="password" /></p>
+						<!-- <button id="conform">确定</button> -->
+						<!-- 这样会重复提交表单 -->
+						<!-- <button id="createuser">新建</button> -->
+					</form>
+					<button id="conform">确定</button>
+					<button id="new-concel">取消</button>
+				</div>
+				<!-- <button id="concel">取消</button> -->
+				<h1>------------------</h1>
+				
+				<h1>------------------</h1>
+				
+			</div>
+<!--*********************-->
+
+<!--*********************-->
+			<!-- new-build -->
+			<div class="new-build"> 
+				<div>
+					<form id="articleform">
+						  <p>TITLE: <input type="text" name="title" /></p>
+						  <p>category:<input type="text" name="category"></p>
+						  <p>introduce:<input type="text" name="introduce"></p>
+						  <p>CONTENT: </p><textarea rows="30" cols="100%" name="content" /></textarea>
+						  <p></p>
+						  
+					</form>
+				</div>
+				<button id="admit">提交</button>
+				<button id="concel">取消</button>
+			</div>
+<!--*********************-->
+
+<!--*********************-->
+			<!-- main -->
+			<div class="main">
+				<ul id="rb-grid" class="rb-grid clearfix">
+				<% clientArticles.forEach(function(clientArticle, index){ %>
+					<li class="icon-clima-2 rb-span-2">
+						<div class="rb-temp headline">
+							<%= clientArticle.title%>
+						</div>
+						<div class="rb-temp introduce"><%= clientArticle.introduce%>
+						</div>
+						<div class="look">查看
+						</div>
+						<div class="rb-temp createtime"><%= clientArticle.createtime%>
+						</div>						
+
+			<!--内容展示-->
+						<div class="rb-overlay">
+							
+							<span class="rb-close">close</span>
+							<div class="article-info">
+								<div class="article-title-bar">
+									<div class="title"><%= clientArticle.title%>
+									</div>
+									<div class="handle-info">
+										<div class="edit"><a href="#">编辑</a></div>
+										<div class="delete"><a href="#">删除</a></div>
+									</div>
+									<div class = "articletime"><%= clientArticle.createtime%></div>
+								</div>
+								<div class="article-left-info">
+									
+									<span>简介</span>
+									<h6>------------------</h6>
+									<div class=""><%= clientArticle.introduce%></div>
+									<h1>-----------------</h1>
+									<div>评论</div>
+									<h6>------------------</h6>
+									<div>待完善。。。</div>
+								</div>
+								<div class="article-right-info">
+									<div class="content"></div>
+								</div>
+							</div>
+						</div>
+					</li>
+				<% })%>
+				</ul>		
+			</div>
+<!--*********************-->
+<!-- </div>/container -->
+		<script src="/javascripts/jquery-1.9.1.min.js"></script>
+		<script src="js/modernizr.custom.js"></script>
+		<script src="js/jquery.fittext.js"></script>
+		<script src="js/boxgrid.effection2.js"></script>
+		<!-- // <script src="js/boxgrid.js"></script> -->
+		<script>
+			$(function() {
+
+				Boxgrid.init();
+			
+			});
+		</script>
+	<!--分配颜色-->
+		<script type="text/javascript">
+		    $(function () {
+		        var a = $("li");
+		        var li_backgroundcolor = new Array("#3399CC", "#e2674a", "#33CCCC","#996699", "#C24747", "#666699", "#339966", "#CC6699", "#669999", "#99CC99");
+		        for (var i = 0; i < a.length; i++) {
+		        	var random = Math.floor(Math.random() * ( 9 + 1));
+		            $(a[i]).css({
+		                        "background": function () {
+		                            // return "#72"+(i)+"CA7";
+		                            return li_backgroundcolor[random];
+		                        }
+		            });
+		            $(a[i]).find(".article-left-info").css({
+		                        "background": function () {
+		                            // return "#72"+(i)+"CA7";
+		                            return li_backgroundcolor[random];
+		                        }
+		            });
+		            $(a[i]).find(".article-title-bar").css({
+		                        "background": function () {
+		                            // return "#72"+(i)+"CA7";
+		                            return li_backgroundcolor[random];
+		                        }
+		            });
+
+		        }       
+		    });
+		</script>
+	<!-- 详细操作 -->
+		<script>
+			$().ready(function () {
+				$(".look").click(function(){
+					var tmpdata = $(this).parent().children(".headline").text();
+					var url = "title="+tmpdata; 
+					// alert(tmpdata);
+					$.get("/findByTitle", url, function(article,status){
+				     	 // alert("数据：" + article.content + "\n状态：" + status);
+				     	 $(".content").html(article.content);
+				    });
+				});
+
+				// $(".delete").click(function(){
+				// 	var tmpdata = $(this).parent().parent().children(".title").text();
+				// 	var url = "title="+tmpdata; 
+				// 	alert(tmpdata);
+				// 	$.get("/deleteArticle", url, function(article,status){
+				//      	 alert( article.content + "已经被删除" + "\n状态：" + status);
+				//      	 // $(".content").html("<h3>"+article.content+"</h3>");
+				//      	 article.url = '/';//设置删除后的跳转页面
+				//      	 location = article.url;//跳转页面
+				//     });
+				// });
+			});
+		</script>
+	<!-- admin确认发布 -->
+		<script type="text/javascript">
+		// 弹出密码确认块
+				$("#new-build").click(function () {
+					$(".logindiv").slideDown();
+					// $(".main").hide();
+					// $(".new-build").show();
+				});
+
+				$("#new-concel").click(function () {
+					$("input").html("");
+					$(".logindiv").slideUp();
+					// $(".main").hide();
+					// $(".new-build").show();
+				});
+
+				$("#conform").click(function () {
+						$.post("/users/check",
+						$("#login").serialize(),
+						function(data,status){
+						      if (status == 'success') {
+						      		if (data.title == 'ok') {
+						      			$("#reset").html("");
+						      			$(".logindiv").slideUp();
+						      			$(".main").hide();
+										$(".new-build").show();
+						      		}else{
+						      			alert(data.title);
+						      		}
+						      }
+						    // alert("数据：" + data.title + "\n状态：" + status);
+					});
+				});
+				// 暂时不对创建用户进行操作
+				// $("#createuser").click(function () {
+				// 	alert("createuser");
+				// 		$.post("/createUser",
+				// 			$("#login").serialize(),
+				// 			function(data,status){
+				// 			    //   if (status == 'success') {
+				// 			    //   		if (data.title == 'ok') {
+				// 			    //   			$(".main").hide();
+				// 							// $(".new-build").show();
+				// 			    //   		}else{
+				// 			    //   			alert(data.title);
+				// 			    //   		}
+				// 			    //   }
+				// 			    alert("数据：" + data.title + "\n状态：" + status);
+				// 		});
+				// });
+
+				$("#concel").click(function () {
+					$(".new-build").hide();
+					$(".main").show();
+				});	
+		</script>
+
+	<!-- 创建文章到数据库 -->
+		<script type="text/javascript">
+			$(document).ready(function(){
+						// data = extend(article, date);
+			  	$("#admit").click(function(){
+
+			  		var data = {};
+			  		//获取提交时间
+					var d = new Date();
+					var date = d.toLocaleString();
+					
+					var article = $("#articleform").serialize();
+					data = article + "&" +"createtime="+date;
+					// alert(data);
+				    $.post("/createArticle",
+				    data,
+				    function(data,status){
+				    	alert("数据：" + data.title + "\n状态：" + status);
+				    	$("input").html("");
+					    $("textarea").html("");
+
+					    // 回到主页面
+					    var reloadUrl = '/';
+					    location = reloadUrl;
+
+				    });
+			  	});
+			});
+		</script>
+
+	</body>
+</html>
