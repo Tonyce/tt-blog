@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 // var	dbURL = 'mongodb://localhost:27017/articleDB';//localhost本地数据库， articleDB是将要存储文章的数据库（collection）
-var	dbURL = 'mongodb://D_ttang:123456789@oceanic.mongohq.com:10030/tt-blog'
+var	dbURL = 'mongodb://<name>:<password>@oceanic.mongohq.com:10030/tt-blog'
 // Create the dateabase connection(连接数据库)
 mongoose.connect(dbURL);
 
