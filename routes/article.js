@@ -48,7 +48,8 @@ exports.phoneGetArticles = function (req, res) {
 //通过title获得文章的内容并返回（只返回内容）
 exports.findByTitle = function (req, res) {
 	//检索get请求并生成相应的字段
-	var title = url.parse(req.url, true).query.title;
+	// var title = url.parse(req.url, true).query.title;
+	var title = req.url.query.title;//有待验证（牛人指点）
 	console.log("title:"+title);
 	//设置content筛选 只返回content
 	Article.findOne({'title': title}, 'content', function(err,articlecontent){
@@ -63,7 +64,8 @@ exports.findByTitle = function (req, res) {
 
 //通过title删掉文章
 exports.deleteArticle = function (req, res) {
-	var title = url.parse(req.url, true).query.title;
+	// var title = url.parse(req.url, true).query.title;
+	var title = req.url.query.title;
 	console.log("title:"+title);
 	// res.json({title: title});
 	
